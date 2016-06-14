@@ -35,6 +35,7 @@ public class TextDataHandler {
 
     private final static String CHI = "chi_sim.traineddata";
     private final static String ENG = "eng.traineddata";
+    private final static String NOMEDIA = ".nomedia";
 
     /**
      * 获取sd卡的路径
@@ -75,11 +76,27 @@ public class TextDataHandler {
     }
 
     /*
+    * 获取图片目录
+    * */
+    public static String getImagePath() {
+        return getDataPath() + getSeparator() + "images";
+    }
+
+    /*
+    * 获取图片目录
+    * */
+    public static String getImageNomediaPath() {
+        return getImagePath() + getSeparator() + NOMEDIA;
+    }
+
+    /*
     * 初始化语言包
     * */
     public static void initTextData(Context context) {
-        createFile(getDataPath());
-        createFile(getTextDataPath());
+        createFolder(getDataPath());
+        createFolder(getTextDataPath());
+        createFolder(getImagePath());
+        createFile(getImageNomediaPath());
         AssetManager am = context.getAssets();
         createFile(am, CHI);
         createFile(am, ENG);
@@ -112,9 +129,23 @@ public class TextDataHandler {
     }
 
     /*
-    * 创建文件夹
+    * 创建文件
     * */
     private static void createFile(String path) {
+        File f = new File(path);
+        if (!f.exists()) {
+            try {
+                f.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /*
+    * 创建文件夹
+    * */
+    private static void createFolder(String path) {
         File f = new File(path);
         if (!f.exists()) {
             f.mkdir();
