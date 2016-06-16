@@ -66,5 +66,6 @@ public class MainActivity extends BaseAcivity {
 
     private void jumpImageListActivity() {
         Passageway.jumpActivity(context, ImageListActivity.class);
+        finish();
     }
 }
