@@ -7,4 +7,27 @@
 
     <include layout="@layout/layout_title" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/imageList_dataList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/line_gray"
+            android:dividerHeight="1px"></ListView>
+
+        <Button
+            android:id="@+id/imageList_addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:text="添加" />
+
+    </RelativeLayout>
+
 </LinearLayout>

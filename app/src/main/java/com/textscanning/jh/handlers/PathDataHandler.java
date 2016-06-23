@@ -31,7 +31,7 @@ import java.io.InputStream;
  * *   ┗┻┛   ┗┻┛
  * Created by Hua on 16/6/13.
  */
-public class TextDataHandler {
+public class PathDataHandler {
 
     private final static String CHI = "chi_sim.traineddata";
     private final static String ENG = "eng.traineddata";
@@ -83,23 +83,39 @@ public class TextDataHandler {
     }
 
     /*
-    * 获取图片目录
+    * 获取图片数据目录
     * */
+    public static String getImageDataPath() {
+        return getDataPath() + getSeparator() + "imagesData";
+    }
+
+
     public static String getImageNomediaPath() {
         return getImagePath() + getSeparator() + NOMEDIA;
+    }
+
+    public static String getImageDataNomediaPath() {
+        return getImageDataPath() + getSeparator() + NOMEDIA;
     }
 
     /*
     * 初始化语言包
     * */
-    public static void initTextData(Context context) {
-        createFolder(getDataPath());
-        createFolder(getTextDataPath());
-        createFolder(getImagePath());
-        createFile(getImageNomediaPath());
-        AssetManager am = context.getAssets();
-        createFile(am, CHI);
-        createFile(am, ENG);
+    public static void initTextData(final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                createFolder(getDataPath());
+                createFolder(getTextDataPath());
+                createFolder(getImagePath());
+                createFolder(getImageDataPath());
+                createFile(getImageNomediaPath());
+                createFile(getImageDataNomediaPath());
+                AssetManager am = context.getAssets();
+                createFile(am, CHI);
+                createFile(am, ENG);
+            }
+        }).start();
     }
 
     /*

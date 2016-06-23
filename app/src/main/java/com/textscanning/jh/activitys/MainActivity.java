@@ -5,10 +5,10 @@ import android.os.Handler;
 import android.widget.TextView;
 
 import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.task.PriorityRunnable;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.textscanning.jh.R;
-import com.textscanning.jh.handlers.TextDataHandler;
+import com.textscanning.jh.handlers.PathDataHandler;
+import com.textscanning.jh.handlers.TextHandeler;
 import com.textscanning.jh.handlers.VersionHandler;
 import com.textscanning.jh.tool.Passageway;
 
@@ -50,8 +50,8 @@ public class MainActivity extends BaseAcivity {
 
     @Override
     public void initActivity() {
-        TextDataHandler.initTextData(context);
-        messageText.setText("Created by Hua" + "\n" + "版本：" + VersionHandler.getVersionName(context));
+        PathDataHandler.initTextData(context);
+        messageText.setText(TextHandeler.getText(context, R.string.created_by) + "\n" + TextHandeler.getText(context, R.string.version).replace("?", VersionHandler.getVersionName(context)));
         stateJumpRun();
     }
 

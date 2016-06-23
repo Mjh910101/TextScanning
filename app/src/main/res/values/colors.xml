@@ -8,5 +8,6 @@
     <color name="text_gray_03">#999999</color>
     <color name="text_gray_02">#666666</color>
     <color name="text_gray_01">#333333</color>
+    <color name="line_gray">#cccccc</color>
     <color name="white">#FFFFFF</color>
 </resources>
