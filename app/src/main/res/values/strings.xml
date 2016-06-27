@@ -4,5 +4,7 @@
     <string name="created_by">Created by Hua</string>
     <string name="version">版本：?</string>
     <string name="my_file">我的文档</string>
+    <string name="taking_photo">拍照</string>
+    <string name="photo_album">相册获取</string>
 
 </resources>

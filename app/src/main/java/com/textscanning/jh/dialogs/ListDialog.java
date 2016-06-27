@@ -149,7 +149,7 @@ public class ListDialog {
                         coloaMap.get(position)));
             } else {
                 item.setTextColor(ColorHandler
-                        .getColorForID(context, R.color.text_gray_03));
+                        .getColorForID(context, R.color.text_gray_02));
             }
 
             return convertView;

@@ -3,6 +3,7 @@ package com.textscanning.jh.activitys;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.lidroid.xutils.ViewUtils;
@@ -10,8 +11,10 @@ import com.lidroid.xutils.task.TaskHandler;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.textscanning.jh.R;
+import com.textscanning.jh.dialogs.ListDialog;
 import com.textscanning.jh.handlers.MessageHandler;
 import com.textscanning.jh.handlers.TextHandeler;
+import com.textscanning.jh.tool.Passageway;
 
 /**
  * *
@@ -81,6 +84,29 @@ public class ImageListActivity extends BaseAcivity {
     }
 
     private void showAddImageDialog() {
+        final ListDialog dialog = new ListDialog(context);
+        dialog.setList(new String[]{TextHandeler.getText(context, R.string.taking_photo), TextHandeler.getText(context, R.string.photo_album)});
+        dialog.setItemListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                dialog.dismiss();
+                switch (position) {
+                    case 0:
+                        takingPhoto();
+                        break;
+                    case 1:
+                        photoAlbum();
+                        break;
+                }
+            }
+        });
+    }
 
+    private void photoAlbum() {
+        Passageway.selectImage(context);
+    }
+
+    private void takingPhoto() {
+        Passageway.takePhoto(context);
     }
 }

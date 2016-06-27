@@ -7,6 +7,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 
+import com.textscanning.jh.handlers.DateHandle;
+import com.textscanning.jh.handlers.PathDataHandler;
+
 import java.io.File;
 
 public class Passageway {
@@ -34,19 +37,19 @@ public class Passageway {
         ((Activity) (context)).startActivityForResult(galleryIntent, IMAGE_REQUEST_CODE);
     }
 
-//    public static String takePhoto(Context context) {
-//        String fileName = "pic_" + DateHandle.getTime() + ".jpg";
-//        Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-//        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, getImageUri(fileName));
-//        cameraIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
-//        ((Activity) (context)).startActivityForResult(cameraIntent,
-//                CAMERA_REQUEST_CODE);
-//        return fileName;
-//    }
-//
-//    private static Uri getImageUri(String fileName) {
-//        return Uri.fromFile(new File(DownloadImageLoader.getImagePath(), fileName));
-//    }
+    public static String takePhoto(Context context) {
+        String fileName = "pic_" + DateHandle.getTime() + ".jpg";
+        Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, getImageUri(fileName));
+        cameraIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
+        ((Activity) (context)).startActivityForResult(cameraIntent,
+                CAMERA_REQUEST_CODE);
+        return fileName;
+    }
+
+    private static Uri getImageUri(String fileName) {
+        return Uri.fromFile(new File(PathDataHandler.getImagePath(), fileName));
+    }
 
     /**
      * @param context
